@@ -1,0 +1,1 @@
+omnidirectional_wheels_gimbal_f407_240301\startup_stm32f427xx.o: startup_stm32f427xx.s
