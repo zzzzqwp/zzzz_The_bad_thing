@@ -9,14 +9,14 @@
                 "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
                 "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\Drivers\\CMSIS\\Include",
                 "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\RM_File",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\RM_logic",
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include",
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include\\arm_linux",
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include\\arm_linux_compat",
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include\\libcxx",
                 "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\MDK-ARM",
                 "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\Core\\Src",
-                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\Drivers\\STM32F4xx_HAL_Driver\\Src",
-                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\RM_logic"
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\rtos\\2111\\Drivers\\STM32F4xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

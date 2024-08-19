@@ -33,4 +33,5 @@ omnidirectional_wheels_gimbal_f407_240301/main_1.o: ..\Core\Src\main.c \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
   ..\Core\Inc\can.h ..\Core\Inc\main.h ..\Core\Inc\dma.h \
-  ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h
+  ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
+  ..\RM_logic\total_stack.h
