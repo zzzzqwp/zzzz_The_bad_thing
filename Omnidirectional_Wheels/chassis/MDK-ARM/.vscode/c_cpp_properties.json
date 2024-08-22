@@ -3,19 +3,19 @@
         {
             "name": "Omnidirectional_Wheels_gimbal_F407_240301",
             "includePath": [
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\Core\\Inc",
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\Drivers\\CMSIS\\Include",
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\RM_File",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\Core\\Inc",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\Drivers\\CMSIS\\Include",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\RM_File",
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include",
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include\\arm_linux",
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include\\arm_linux_compat",
                 "C:\\Keil_v5\\ARM\\ARMCLANG\\include\\libcxx",
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\MDK-ARM",
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\Core\\Src",
-                "c:\\Users\\Administrator\\Desktop\\师兄程序\\16.0\\16.0\\Omnidirectional_Wheels_gimbal_F407_240301\\Drivers\\STM32F4xx_HAL_Driver\\Src"
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\MDK-ARM",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\Core\\Src",
+                "d:\\桌面\\zzzz_The_bad_thing\\zzzz_The_bad_thing\\Omnidirectional_Wheels\\chassis\\Drivers\\STM32F4xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
