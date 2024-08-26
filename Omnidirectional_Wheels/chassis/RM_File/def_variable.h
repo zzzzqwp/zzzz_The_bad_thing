@@ -15,6 +15,7 @@
 #include <string.h>
 #include <stdarg.h>
 #include "RM_RefereeSystem.h"
+#include "tim.h"
 
 /*
 														操作控制策划														

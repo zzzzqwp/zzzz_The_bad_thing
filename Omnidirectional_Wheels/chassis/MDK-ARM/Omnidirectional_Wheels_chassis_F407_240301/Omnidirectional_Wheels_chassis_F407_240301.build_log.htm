@@ -3,13 +3,13 @@
 <pre>
 <h1>�Vision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ��Vision V5.32.0.0
+IDE-Version: �Vision V5.32.0.0
 Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: zzzz Administrator, zzzzqwq, LIC=EXJT4-FIL6Q-PC7J8-3GZDJ-A8NHW-R5F29
+License Information: a 799323497@qq.com, a, LIC=IK1BF-6631N-VERHA-1ZKBX-DBAKC-S9EJG
  
 Tool Versions:
 Toolchain:       MDK-ARM Plus  Version: 5.32.0.0
-Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+Toolchain Path:  D:\Keil5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 7 (build 960)
 Assembler:       Armasm.exe V5.06 update 7 (build 960)
 Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
@@ -17,18 +17,30 @@ Library Manager: ArmAr.exe V5.06 update 7 (build 960)
 Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
 CPU DLL:         SARMCM3.DLL V5.32.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      CMSIS_AGDI.dll V1.32.12.0
+Target DLL:      CMSIS_AGDI.dll V1.33.15.0
 Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
-C:\Users\Administrator\Desktop\ʦ�ֳ���\16.0\16.0\Omnidirectional_Wheels_chassis_F407_240301\MDK-ARM\Omnidirectional_Wheels_chassis_F407_240301.uvprojx
-Project File Date:  05/27/2024
+D:\E\GitHub_Desktop\demo\zzzz_The_bad_thing\Omnidirectional_Wheels\chassis\MDK-ARM\Omnidirectional_Wheels_chassis_F407_240301.uvprojx
+Project File Date:  08/26/2024
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil5\ARM\ARMCC\Bin'
 Build target 'Omnidirectional_Wheels_chassis_F407_240301'
-Note: source file '..\Core\Src\main.cpp' - object file renamed from 'Omnidirectional_Wheels_chassis_F407_240301\main.o' to 'Omnidirectional_Wheels_chassis_F407_240301\main_1.o'.
-compiling main.cpp...
+Note: source file '..\Core\Src\main.c' - object file renamed from 'Omnidirectional_Wheels_chassis_F407_240301\main.o' to 'Omnidirectional_Wheels_chassis_F407_240301\main_1.o'.
+compiling main.c...
+../RM_File/Total_stack.h(7): warning:  #1295-D: Deprecated declaration Total_tasks_Init - give arg types
+  	void Total_tasks_Init();
+../RM_File/Total_stack.h(10): warning:  #1295-D: Deprecated declaration Total_tasks_Run - give arg types
+  	void Total_tasks_Run();
+../RM_File/Total_stack.h(13): warning:  #1295-D: Deprecated declaration Send_3508_CAN - give arg types
+  	void Send_3508_CAN();
+../RM_File/Total_stack.h(16): warning:  #1295-D: Deprecated declaration Chassis_Task - give arg types
+  	void Chassis_Task();
+../RM_File/Total_stack.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif  // __cplusplus
+..\Core\Src\main.c: 5 warnings, 0 errors
+compiling Total_stack.cpp...
 ../RM_File/RM_stm32fxxx_hal.h(49): warning:  #1-D: last line of file ends without a newline
   /**************************************************************************/
 ../RM_File/ladrc.h(15): warning:  #1035-D: single-precision operand implicitly converted to double-precision
@@ -44,17 +56,17 @@ compiling main.cpp...
 ../RM_File/ladrc.h(83): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
   	 :r(r),h(h),max_x2(max_x2),Fun(Fun)
 ../RM_File/ladrc.h(114): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          this->r2_1 = 1.0 / (2.0 * this->r);//r2_1�?2r的倒数
+          this->r2_1 = 1.0 / (2.0 * this->r);//r2_1???2r????�????
 ../RM_File/ladrc.h(186): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
   		:td(td),b(b),max_u(max_u),h(h),wc(wc),w0(w0),max_z2(max_z2)
 ../RM_File/ladrc.h(186): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
   		:td(td),b(b),max_u(max_u),h(h),wc(wc),w0(w0),max_z2(max_z2)
 ../RM_File/ladrc.h(231): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            this->bt1 = 2.0 * this->w0;//β1
+            this->bt1 = 2.0 * this->w0;//??1
 ../RM_File/ladrc.h(245): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            this->bt1 = 3.0 * this->w0;//β1
+            this->bt1 = 3.0 * this->w0;//??1
 ../RM_File/ladrc.h(246): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            this->bt2 = 3.0 * this->w0 * this->w0;//β2
+            this->bt2 = 3.0 * this->w0 * this->w0;//??2
 ../RM_File/ladrc.h(316): warning:  #1035-D: single-precision operand implicitly converted to double-precision
             this->kd = 2.0 * this->wc;
 ../RM_File/RM_Wheel.h(22): warning:  #1035-D: single-precision operand implicitly converted to double-precision
@@ -83,25 +95,27 @@ compiling main.cpp...
         this->angle[3] = atan2(tempvx[3] , tempvy[3]) * 180 / 3.14 * 8191 / 360;
 ../RM_File/RM_RefereeSystem.h(190): warning:  #1-D: last line of file ends without a newline
   extern uint8_t daohang_tx_buf[128];
-../RM_File/Total_stack.h(295): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  			yaw_e_radian = (yaw_e_xita) * 0.017453;//转弧�?
-../RM_File/Total_stack.h(381): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//底盘解算
-../RM_File/Total_stack.h(381): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//底盘解算
-../RM_File/Total_stack.h(381): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//底盘解算
-../RM_File/Total_stack.h(653): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+../RM_File/Total_stack.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif  // __cplusplus
+Total_stack.cpp(97): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	dianlupid = (-wheel_ladrc_left_1.u+wheel_ladrc_left_2.u+wheel_ladrc_right_1.u+(-wheel_ladrc_right_2.u))*0.25;
+Total_stack.cpp(308): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  			yaw_e_radian = (yaw_e_xita) * 0.017453;//??????
+Total_stack.cpp(394): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//????????
+Total_stack.cpp(394): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//????????
+Total_stack.cpp(394): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//????????
+Total_stack.cpp(661): warning:  #1035-D: single-precision operand implicitly converted to double-precision
   	ly = (asin(angle_ly / 180.0 * 3.1415926) * 43) * collide_magnify;
-../RM_File/Total_stack.h(768): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+Total_stack.cpp(776): warning:  #1035-D: single-precision operand implicitly converted to double-precision
   		send_graphic_queue.add(RM_RefereeSystem::RM_RefereeSystemSetRectangle("cdc",1,CD_X - CD_W,CD_Y - CD_H + 10,CD_X - CD_W + pm01.cout_voltage * 16.7,CD_Y + CD_H - 10));
-..\Core\Src\main.cpp(127): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		dianlupid = (-wheel_ladrc_left_1.u+wheel_ladrc_left_2.u+wheel_ladrc_right_1.u+(-wheel_ladrc_right_2.u))*0.25;
-..\Core\Src\main.cpp: 34 warnings, 0 errors
+Total_stack.cpp: 35 warnings, 0 errors
 linking...
-Program Size: Code=36136 RO-data=2020 RW-data=312 ZI-data=10448  
+Program Size: Code=36418 RO-data=2026 RW-data=308 ZI-data=10452  
 FromELF: creating hex file...
-"Omnidirectional_Wheels_chassis_F407_240301\Omnidirectional_Wheels_chassis_F407_240301.axf" - 0 Error(s), 34 Warning(s).
+"Omnidirectional_Wheels_chassis_F407_240301\Omnidirectional_Wheels_chassis_F407_240301.axf" - 0 Error(s), 40 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -112,19 +126,19 @@ Package Vendor: ARM
    * Component: CORE Version: 5.4.0
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32F4xx_DFP.1.0.8.pack
-                Keil.STM32F4xx_DFP.1.0.8
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil.STM32F4xx_DFP.2.17.1
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_Omnidirectional_Wheels_chassis_F407_240301
-  C:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
-  C:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\Include
+  D:\Keil5\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  D:\Keil5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

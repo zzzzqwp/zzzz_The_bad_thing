@@ -26,6 +26,7 @@
 "omnidirectional_wheels_chassis_f407_240301\stm32f4xx_hal_tim_ex.o"
 "omnidirectional_wheels_chassis_f407_240301\stm32f4xx_hal_uart.o"
 "omnidirectional_wheels_chassis_f407_240301\system_stm32f4xx.o"
+"omnidirectional_wheels_chassis_f407_240301\total_stack.o"
 "omnidirectional_wheels_chassis_f407_240301\rm_refereesystemcrc.o"
 "omnidirectional_wheels_chassis_f407_240301\rm_refereesystem.o"
 --strict --scatter "Omnidirectional_Wheels_chassis_F407_240301\Omnidirectional_Wheels_chassis_F407_240301.sct"

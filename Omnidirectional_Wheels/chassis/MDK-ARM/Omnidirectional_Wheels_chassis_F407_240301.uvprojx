@@ -16,8 +16,8 @@
         <TargetCommonOption>
           <Device>STM32F407IG</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.1.0.8</PackID>
-          <PackURL>http://www.keil.com/pack</PackURL>
+          <PackID>Keil.STM32F4xx_DFP.2.17.1</PackID>
+          <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x20000) IRAM2(0x10000000,0x10000) IROM(0x08000000,0x100000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -394,9 +394,9 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
-              <FileName>main.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\main.cpp</FilePath>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\main.c</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>
@@ -539,6 +539,21 @@
           <GroupName>RM_FILE</GroupName>
           <Files>
             <File>
+              <FileName>Total_stack.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Total_stack.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Total_stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\RM_File\Total_stack.h</FilePath>
+            </File>
+            <File>
+              <FileName>def_variable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\RM_File\def_variable.h</FilePath>
+            </File>
+            <File>
               <FileName>ladrc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\RM_File\ladrc.h</FilePath>
@@ -589,11 +604,6 @@
               <FilePath>..\RM_File\RM_stm32fxxx_hal.h</FilePath>
             </File>
             <File>
-              <FileName>Total_stack.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\RM_File\Total_stack.h</FilePath>
-            </File>
-            <File>
               <FileName>RM_Wheel.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\RM_File\RM_Wheel.h</FilePath>
@@ -602,11 +612,6 @@
               <FileName>RM_PM01.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\RM_File\RM_PM01.h</FilePath>
-            </File>
-            <File>
-              <FileName>def_variable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\RM_File\def_variable.h</FilePath>
             </File>
             <File>
               <FileName>RM_RefereeSystemCRC.h</FileName>

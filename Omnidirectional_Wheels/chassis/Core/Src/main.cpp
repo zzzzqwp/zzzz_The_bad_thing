@@ -98,9 +98,7 @@ int main(void)
   MX_TIM5_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-	Total_tasks_Init();//基本参数初始化
-	HAL_TIM_Base_Start_IT(&htim6);//控制器定时
-	HAL_TIM_Base_Start_IT(&htim5);//发送
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,21 +108,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		//上下板子断链
-		Gimbal_to_Chassis_Data.dir = Gimbal_to_Chassis_Data.dir_time.ISDir(50);
-		if(Gimbal_to_Chassis_Data.dir)Get_Gimbal_to_Chassis_Init();
-		dir = Gimbal_to_Chassis_Data.dir;
-		RM_RefereeSystem::RM_RefereeSystemDir();
-		
-		//上下板通信挂掉
-		HAL_GPIO_WritePin(GPIOG,GPIO_PIN_1,((GPIO_PinState)!dir));
-		
-		pm01.PM01SendFun();//发送超电
-				
-		darw_graphic_ui();//发送ui
-		dianlu = (-_Motor3508_[0].Data[Motor_Data_Torque]+_Motor3508_[1].Data[Motor_Data_Torque]+_Motor3508_[2].Data[Motor_Data_Torque]+(-_Motor3508_[3].Data[Motor_Data_Torque]))*0.25;
-		dianlutd.td_quadratic(dianlu / 819.2 * 24);
-		dianlupid = (-wheel_ladrc_left_1.u+wheel_ladrc_left_2.u+wheel_ladrc_right_1.u+(-wheel_ladrc_right_2.u))*0.25;
+
   }
   /* USER CODE END 3 */
 }

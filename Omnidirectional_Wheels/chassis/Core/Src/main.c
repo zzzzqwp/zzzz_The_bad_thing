@@ -26,7 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "Total_stack.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,6 +99,10 @@ int main(void)
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
 	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);
+	
+	Total_tasks_Init();//基本参数初始化
+	HAL_TIM_Base_Start_IT(&htim6);//控制器定时
+	HAL_TIM_Base_Start_IT(&htim5);//发送
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,6 +112,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	Total_tasks_Run();
   }
   /* USER CODE END 3 */
 }
@@ -158,7 +163,17 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef *htim)//回调函数
+{
+	if(htim == &htim6)
+	{		
+		Chassis_Task();
+	}
+	if(htim == &htim5)
+	{
+		Send_3508_CAN();
+	}
+}
 /* USER CODE END 4 */
 
 /**
