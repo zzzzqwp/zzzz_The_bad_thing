@@ -2,6 +2,8 @@
 
 #include <math.h>
 
+
+
 struct combines_x_x_t
 {
   float y1;//当前真实值
@@ -169,7 +171,7 @@ struct LADRC_quadratic
   float bt1,bt2,bt3,max_z2,max_z3;
   float customize_rank1_z1_dt;
   float customize_rank2_z1_dt;
-  float customize_rank2_z1_dt_k = 0;
+  float customize_rank2_z1_dt_k;
   combines_x_x_t customize_rank2_z1_add_z2;
   //分频频率
 	unsigned char Frequency,_Frequency_;

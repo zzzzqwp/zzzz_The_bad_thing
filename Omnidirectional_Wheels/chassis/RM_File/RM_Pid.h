@@ -35,11 +35,6 @@ typedef struct
 		unsigned char Frequency,_Frequency_;
 		//td跟踪微分器，跟踪误差
 		TD_quadratic td_e;
-		char is_open_td_e;
-		//自定义d
-		double customize_cin_d;
-		TD_quadratic td_c_c_d;
-		char is_open_customize_cin_d;
 		//限幅
 		double MixI;
 }Pid_t;
@@ -53,9 +48,6 @@ public:
 	RM_PID()
 	{
 		this->pid.td_e.r = 100;
-		this->pid.td_c_c_d.r = 100;
-		this->pid.is_open_td_e = 0;
-		this->pid.is_open_customize_cin_d = 0;
 	}
 	//积分上限和变速积分
 	void SetMixI(double maxi,double IerrorA,double IerrorB);
@@ -69,10 +61,6 @@ public:
 	void PidRstDelta();
 	//增量式pid获取
 	double GetPidDelta(Kpid_t kpid,double cin,double feedback,double max);
-	//输入自定义d
-	void Set_customize_d(double d);
-	//开启误差微分跟踪器
-	void Is_Open_td_e(char is);
 };
 
 inline void RM_PID::SetMixI(double maxi, double IerrorA, double IerrorB)
@@ -80,17 +68,6 @@ inline void RM_PID::SetMixI(double maxi, double IerrorA, double IerrorB)
   this->pid.MixI = maxi;
 	this->pid.IerrorA = IerrorA;
 	this->pid.IerrorB = IerrorB;
-}
-
-inline void RM_PID::Is_Open_td_e(char is)
-{
-  this->pid.is_open_td_e = is;
-}
-
-inline void RM_PID::Set_customize_d(double d)
-{
-  this->pid.is_open_customize_cin_d = true;
-	this->pid.customize_cin_d = d;
 }
 
 inline void RM_PID::SetFrequency(double Frequency)
@@ -108,18 +85,10 @@ inline double RM_PID::GetPidPos(Kpid_t kpid, double cin, double feedback, double
 	this->pid.cin = cin;
 	//反馈
 	this->pid.feedback = feedback;
-	//误差计算
-	if(this->pid.is_open_td_e == 0)
-	{
-		this->pid.now_e = cin - feedback;
-	}
-	else
-	{
-		//跟踪误差
-		this->pid.td_e.td_quadratic(cin - feedback);
-		//输入误差
-		this->pid.now_e = this->pid.td_e.x1;
-	}
+	//跟踪误差
+	this->pid.td_e.td_quadratic(cin - feedback);
+   //输入误差
+   this->pid.now_e = this->pid.td_e.x1;
    //p值
    this->pid.p = kpid.kp * this->pid.now_e;
    //变速积分
@@ -140,29 +109,10 @@ inline double RM_PID::GetPidPos(Kpid_t kpid, double cin, double feedback, double
 	//积分限幅
 	if(this->pid.i > this->pid.MixI) this->pid.i = this->pid.MixI;
 	if(this->pid.i < -this->pid.MixI) this->pid.i = -this->pid.MixI;
-	//自定义d
-	if(this->pid.is_open_customize_cin_d == 0)
-	{		
-		//误差微分跟踪器
-		if(this->pid.is_open_td_e == 0)
-		{
-			//d值
-			this->pid.d = kpid.kd * (this->pid.now_e - this->pid.last_e);
-			//上一次误差
-			this->pid.last_e = this->pid.now_e;
-		}
-		else
-		{
-			//d值
-			this->pid.d = kpid.kd * this->pid.td_e.x2;
-		}
-	}
-	else
-	{
-		//跟踪自定义微分
-		this->pid.td_c_c_d.td_quadratic(this->pid.customize_cin_d);
-		this->pid.d = kpid.kd * this->pid.td_c_c_d.x1;
-	}
+  //d值
+  this->pid.d = kpid.kd * this->pid.td_e.x2;
+//   //上一次误差
+//   this->pid.last_e = this->pid.now_e;
 	//清除积分输出
 	if(kpid.ki == 0.0f) this->pid.i = 0;
    //输出值

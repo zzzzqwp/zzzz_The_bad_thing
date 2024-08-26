@@ -6,11 +6,6 @@ typedef struct
 	float x;
 	float y;
 	float z;
-	float z_360;//360度z
-	float last_z_360;//上一次角度
-	float Add_z;//累计角度
-	bool InitFlag;//初始化标记
-	float InitData;//初始化角度
   //加速度
 	int16_t AcSx;
 	int16_t AcSy;
@@ -42,39 +37,16 @@ inline void RM_CHxxxGy::Parse(CAN_RxHeaderTypeDef RxHeader, uint8_t RxHeaderData
 	}
 	if(RxHeader.StdId == 0x288)
 	{
-		this->gy.ASx = (float)((int16_t)((RxHeaderData[1] << 8) | RxHeaderData[0])) * 0.01;
-		this->gy.ASy = (float)((int16_t)((RxHeaderData[3] << 8) | RxHeaderData[2])) * 0.01;
-		this->gy.ASz = (float)((int16_t)((RxHeaderData[5] << 8) | RxHeaderData[4])) * 0.01;
+		this->gy.ASx = (float)((int16_t)((RxHeaderData[1] << 8) | RxHeaderData[0])) / 100;
+		this->gy.ASy = (float)((int16_t)((RxHeaderData[3] << 8) | RxHeaderData[2])) / 100;
+		this->gy.ASz = (float)((int16_t)((RxHeaderData[5] << 8) | RxHeaderData[4])) / 100;
 	}
 	if(RxHeader.StdId == 0x388)
 	{
-		this->gy.x = (float)((int16_t)((RxHeaderData[1] << 8) | RxHeaderData[0])) * 0.01;
-		this->gy.y = (float)((int16_t)((RxHeaderData[3] << 8) | RxHeaderData[2])) * 0.01;
-		this->gy.z = (float)((int16_t)((RxHeaderData[5] << 8) | RxHeaderData[4])) * 0.01;
-		this->gy.z_360 = this->gy.z;
-		if(this->gy.z_360 < 0)this->gy.z_360 += 360;
-		//数据累加
-		if(this->gy.last_z_360 != this->gy.z_360 && 
-			 this->gy.last_z_360 != -1)
-		{
-				float lastData = this->gy.last_z_360;
-				float Data = this->gy.z_360;
-				if(Data - lastData < -(360*0.5))//正转
-					this->gy.Add_z += (360 - lastData + Data);
-				else if(Data - lastData > (360*0.5))//反转
-					this->gy.Add_z += -(360 - Data + lastData);
-				else 
-					this->gy.Add_z += (Data - lastData);
-		}
-		//数据上一次更新
-		//数据解析
-		this->gy.last_z_360 = this->gy.z_360;
-		//初始化数据
-		if(this->gy.InitFlag == 0)
-		{
-			this->gy.InitData = this->gy.z_360;
-			this->gy.InitFlag = 1;
-		}
+		this->gy.y = (float)((int16_t)((RxHeaderData[1] << 8) | RxHeaderData[0])) / 100;
+		this->gy.x = (float)((int16_t)((RxHeaderData[3] << 8) | RxHeaderData[2])) / 100;
+		this->gy.z = (float)((int16_t)((RxHeaderData[5] << 8) | RxHeaderData[4])) / 100;
+		if(this->gy.z < 0)this->gy.z += 360;
 	}
   dirTime.UpLastTime();
 }

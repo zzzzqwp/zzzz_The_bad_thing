@@ -1,12 +1,15 @@
 omnidirectional_wheels_gimbal_f407_240301/stream_buffer.o: \
-  ..\FreeRTOS\stream_buffer.c \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\FreeRTOS\include\FreeRTOS.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  ..\FreeRTOS\FreeRTOSConfig.h ..\FreeRTOS\include\projdefs.h \
-  ..\FreeRTOS\include\portable.h \
-  ..\FreeRTOS\include\deprecated_definitions.h \
-  ..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h \
-  ..\FreeRTOS\include\mpu_wrappers.h ..\FreeRTOS\include\task.h \
-  ..\FreeRTOS\include\list.h ..\FreeRTOS\include\stream_buffer.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  ..\Core\Inc\FreeRTOSConfig.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\stream_buffer.h

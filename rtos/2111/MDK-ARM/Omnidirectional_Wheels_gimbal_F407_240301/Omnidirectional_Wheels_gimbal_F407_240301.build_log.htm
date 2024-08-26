@@ -22,13 +22,86 @@ Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
 D:\×ÀÃæ\zzzz_The_bad_thing\zzzz_The_bad_thing\rtos\2111\MDK-ARM\Omnidirectional_Wheels_gimbal_F407_240301.uvprojx
-Project File Date:  08/19/2024
+Project File Date:  08/25/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.14.1', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Omnidirectional_Wheels_gimbal_F407_240301'
-Note: source file '../Core/Src/main.c' - object file renamed from 'Omnidirectional_Wheels_gimbal_F407_240301\main.o' to 'Omnidirectional_Wheels_gimbal_F407_240301\main_1.o'.
-"Omnidirectional_Wheels_gimbal_F407_240301\Omnidirectional_Wheels_gimbal_F407_240301.axf" - 0 Error(s), 0 Warning(s).
+../Core/Src/main.c(29): warning: In file included from...
+../RM_File\def_variable.h(3): warning: In file included from...
+../RM_File/RM_StaticTime.h(3): warning: In file included from...
+../RM_File/RM_stdxxx.h(6): error: unknown type name 'using'
+using namespace std;
+^
+../RM_File/RM_stdxxx.h(6): error: expected ';' after top level declarator
+using namespace std;
+               ^
+               ;
+../Core/Src/main.c(29): warning: In file included from...
+../RM_File\def_variable.h(3): warning: In file included from...
+../RM_File/RM_StaticTime.h(4): warning: In file included from...
+../RM_File/RM_Key.h(2): error: unknown type name 'class'
+class RM_Key
+^
+../RM_File/RM_Key.h(2): error: expected ';' after top level declarator
+class RM_Key
+            ^
+            ;
+../RM_File/RM_Key.h(11): error: 'inline' can only appear on functions
+inline void RM_Key::UpKey(bool key)
+^
+../RM_File/RM_Key.h(11): error: variable has incomplete type 'void'
+inline void RM_Key::UpKey(bool key)
+            ^
+../RM_File/RM_Key.h(11): error: expected ';' after top level declarator
+inline void RM_Key::UpKey(bool key)
+                  ^
+                  ;
+../RM_File/RM_Key.h(11): error: expected identifier or '('
+inline void RM_Key::UpKey(bool key)
+                   ^
+../RM_File/RM_Key.h(20): error: unknown type name 'bool'
+inline bool RM_Key::GetRisingKey()
+       ^
+../RM_File/RM_Key.h(20): error: 'inline' can only appear on functions
+inline bool RM_Key::GetRisingKey()
+^
+../RM_File/RM_Key.h(20): error: expected ';' after top level declarator
+inline bool RM_Key::GetRisingKey()
+                  ^
+                  ;
+../RM_File/RM_Key.h(20): error: expected identifier or '('
+inline bool RM_Key::GetRisingKey()
+                   ^
+../RM_File/RM_Key.h(25): error: unknown type name 'bool'
+inline bool RM_Key::GetFallingKey()
+       ^
+../RM_File/RM_Key.h(25): error: 'inline' can only appear on functions
+inline bool RM_Key::GetFallingKey()
+^
+../RM_File/RM_Key.h(25): error: expected ';' after top level declarator
+inline bool RM_Key::GetFallingKey()
+                  ^
+                  ;
+../RM_File/RM_Key.h(25): error: expected identifier or '('
+inline bool RM_Key::GetFallingKey()
+                   ^
+../Core/Src/main.c(29): warning: In file included from...
+../RM_File\def_variable.h(3): warning: In file included from...
+../RM_File/RM_StaticTime.h(5): error: unknown type name 'class'
+class RM_StaticTime
+^
+../RM_File/RM_StaticTime.h(5): error: expected ';' after top level declarator
+class RM_StaticTime
+                   ^
+                   ;
+../RM_File/RM_StaticTime.h(18): error: 'inline' can only appear on functions
+inline void RM_StaticTime::UpLastTime()
+^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+compiling main.c...
+"Omnidirectional_Wheels_gimbal_F407_240301\Omnidirectional_Wheels_gimbal_F407_240301.axf" - 19 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -51,6 +124,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
+Target not created.
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

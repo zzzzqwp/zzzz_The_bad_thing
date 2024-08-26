@@ -23,9 +23,13 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "def_variable.h"
+#include "RM_stdxxx.h"
 #include "total_stack.h"
+//combines_x_x_t xsd;float sdfx = 0.2;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,7 +61,21 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef *htim)//回调函数
+{
+	if(htim == &htim6)
+	{
+		logic_task();
+	}
+	if(htim == &htim5)
+	{
+		Send_Gimbal_to_Chassis_task();
+	}
+	if(htim == &htim7)
+	{
+		vision_task();
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -101,7 +119,13 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-
+	HAL_UARTEx_ReceiveToIdle_DMA(&vision_Huart,vision_data.vision_RX_data,13);//视觉接收
+	Total_tasks_Init();//基本参数初始化
+	HAL_TIM_Base_Start_IT(&htim6);//控制器定时
+	HAL_TIM_Base_Start_IT(&htim5);//发送
+	HAL_TIM_Base_Start_IT(&htim7);
+//	HAL_UART_Receive_IT(&vision_Huart,vision_data.vision_RX_data,9);
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -111,6 +135,45 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		dir = rmClicker.ISDir();
+		Motor2006.ISDir();
+		Motor3508.ISDir();
+		Motor6020.ISDir();
+		
+		//陀螺仪获取端
+		#if GY_GET_SIG == GY_CAN
+			GY_dir |= chGy_chassis.GetDir();
+		#elif GY_GET_SIG == GY_232
+			GY_dir |= ch_gyro_232_is_dir(&ch_gyro_232_uart_chassis,&chGy_chassis);
+		#endif
+		
+		Total_tasks_Run();		
+
+//		td1.td_quadratic(chGy_chassis.data.ASz);
+//		td2.td_quadratic(chGy_chassis.data.ASz);
+//		td3.td_quadratic(chGy_chassis.data.ASz);
+//	xsd.combines_x_x(td_pitch_encoder_angle.u + 232.2,td_pitch_gy_angle.u,sdfx,0.001);
+//	*((float*)&send_str2[0]) = (td_pitch_encoder_angle.u + 232.2);
+//	*((float*)&send_str2[4]) = (td_pitch_encoder_angle.x1 + 232.2);
+//	*((float*)&send_str2[8]) =  td_pitch_gy_angle.u;
+//	*((float*)&send_str2[12]) = xsd.y2;
+//	*((float*)&send_str2[16]) =  0;	
+//	*((float*)&send_str2[16]) =  0;
+  #if Debug_UART_SW == Debug_ON
+	  *((float*)&send_str2[0]) = yaw_target_add_angle;
+  	*((float*)&send_str2[4]) = yaw_zz_pid_s.feedback;
+	  *((float*)&send_str2[8]) =  _Motor6020_[1].Data[0];
+	  *((float*)&send_str2[12]) = RM_yaw_UDE.out_torque;
+	  *((float*)&send_str2[16]) = RM_yaw_UDE.feedback_torque;
+	  *((float*)&send_str2[20]) = RM_yaw_UDE.out;
+	  *((float*)&send_str2[24]) =  (yaw_zz_pid_v.out-RM_yaw_UDE.out);
+	  *((uint32_t*)&send_str2[sizeof(float) * (7)]) = 0x7f800000;
+	  //开始发送数据
+   HAL_UART_Transmit_DMA(&Send_Usart_Data_Huart, send_str2, sizeof(float) * (7 + 1));
+
+  #elif Debug_UART_SW == Debug_OFF
+
+  #endif
   }
   /* USER CODE END 3 */
 }
@@ -170,40 +233,6 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
-/**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM3 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM3) 
-	{
-    HAL_IncTick();
-  }
-	if(htim->Instance == TIM6)
-	{
-		logic_task();
-	}
-	if(htim->Instance == TIM5)
-	{
-		Send_Gimbal_to_Chassis_task();
-	}
-	if(htim->Instance == TIM7)
-	{
-		vision_task();
-	}
-  /* USER CODE BEGIN Callback 1 */
-
-  /* USER CODE END Callback 1 */
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.

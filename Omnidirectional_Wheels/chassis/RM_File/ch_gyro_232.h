@@ -1,10 +1,9 @@
 #pragma once
 
 #include "usart.h"
-#include "RM_StaticTime.h"//静态定时器
 
 #define ch_gyro_232_MpDL 82//最大数组长度
-#define ch_gyro_232_uart_chassis huart6//串口
+#define ch_gyro_232_uart_chassis huart8//串口
 #define ch_gyro_232_MDL 76//数据域长度
 
 typedef struct 
@@ -13,8 +12,6 @@ typedef struct
 	uint8_t find_last_pData;//保存上一次的寻找结果
 	uint8_t pData[ch_gyro_232_MpDL];//全部数据
 	uint16_t crc;//crc校验
-	bool dir;//断链或者错误标志
-	RM_StaticTime dirtime;//断链时间
 	struct
 	{
 		uint8_t frame_header;//帧头
@@ -51,19 +48,6 @@ void ch_gyro_232_Init(UART_HandleTypeDef* huart,ch_gyro_232_t* ch_gyro_232_data)
 
 void ch_gyro_232_ore(UART_HandleTypeDef* huart,ch_gyro_232_t* ch_gyro_232_data);//解决ore问题
 
-bool ch_gyro_232_is_dir(UART_HandleTypeDef* huart,ch_gyro_232_t* ch_gyro_232_data);//判断断链
-
-bool ch_gyro_232_is_dir(UART_HandleTypeDef* huart,ch_gyro_232_t* ch_gyro_232_data)
-{
-	ch_gyro_232_data->dir = false;
-	if(ch_gyro_232_data->data.label != 0x91)
-		ch_gyro_232_data->dir = true;
-	ch_gyro_232_data->dir |= ch_gyro_232_data->dirtime.ISDir(50);
-
-	ch_gyro_232_ore(huart,ch_gyro_232_data);//处理陀螺仪ore问题
-	return ch_gyro_232_data->dir;
-}
-
 void ch_gyro_232_ore(UART_HandleTypeDef* huart,ch_gyro_232_t* ch_gyro_232_data)//解决ore问题
 {
 	if( __HAL_UART_GET_FLAG( huart, UART_FLAG_ORE ) != RESET )
@@ -77,17 +61,9 @@ void ch_gyro_232_parse(UART_HandleTypeDef* huart,UART_HandleTypeDef* bind_huart,
 {
 	if(huart == bind_huart)
 	{
-		ch_gyro_232_data->dirtime.UpLastTime();//更新时间
 		if(ch_gyro_232_data->find_last_pData == 0x5A && ch_gyro_232_data->find_pData == 0xA5)
 		{
 			HAL_UART_Receive_DMA(huart,ch_gyro_232_data->pData,ch_gyro_232_MpDL);//开启dma接收
-			
-			if(ch_gyro_232_data->data.label != 0x91)
-			{
-				ch_gyro_232_data->find_last_pData = ch_gyro_232_data->find_pData = 0x00;
-				ch_gyro_232_Init(huart,ch_gyro_232_data);
-				return;
-			}
 		}
 		else
 		{
@@ -95,6 +71,7 @@ void ch_gyro_232_parse(UART_HandleTypeDef* huart,UART_HandleTypeDef* bind_huart,
 			HAL_UART_Receive_IT(huart,&ch_gyro_232_data->find_pData,1);//先使用中断接收到帧头
 		}
 
+		
 		*((uint16_t*)&ch_gyro_232_data->frame_format.frame_header) = *((uint16_t*)&ch_gyro_232_data->pData[ch_gyro_232_MpDL - 2]);//末端两位
 		memcpy((((uint8_t*)&ch_gyro_232_data->frame_format) + 2),ch_gyro_232_data->pData,sizeof(ch_gyro_232_data->frame_format) - 2);//解算数据帧格式
 //		voidcrc16_update(&ch_gyro_232_data->crc,ch_gyro_232_data->pData,4);//crc校验前四位

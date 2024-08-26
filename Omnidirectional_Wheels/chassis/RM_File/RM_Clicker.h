@@ -19,14 +19,14 @@
 #define KEY_PRESSED_OFFSET_B       (uint8_t)(RM_Clicker::RC_Ctl.key.v >> 15 & (uint8_t)0x01)
 #define MOUSE_RDOWN								 (uint8_t)(RM_Clicker::RC_Ctl.mouse.press_r)	 
 #define MOUSE_LDOWN								 (uint8_t)(RM_Clicker::RC_Ctl.mouse.press_l)
-#define MOUSE_X										 (float)(RM_Clicker::RC_Ctl.mouse.x)
-#define MOUSE_Y										 (float)(RM_Clicker::RC_Ctl.mouse.y)
+#define MOUSE_X										 (float)((RM_Clicker::RC_Ctl.mouse.x)
+#define MOUSE_Y										 (float)((RM_Clicker::RC_Ctl.mouse.y)
 #define RC_LX                      (int16_t)(RM_Clicker::RC_Ctl.rc.ch2 - 1024)
 #define RC_LY                      (int16_t)(RM_Clicker::RC_Ctl.rc.ch3 - 1024)
 #define RC_RX                      (int16_t)(RM_Clicker::RC_Ctl.rc.ch0 - 1024)
 #define RC_RY                      (int16_t)(RM_Clicker::RC_Ctl.rc.ch1 - 1024)
 
-#define ClickerHuart huart1
+#define ClickerHuart huart3
 //结构体
 typedef struct
 {
@@ -38,7 +38,6 @@ typedef struct
 	 uint16_t ch3;
 	 uint8_t s1;
 	 uint8_t s2;
-	 uint16_t bl;
  }rc;
  struct 
  {
@@ -103,7 +102,6 @@ inline RC_Ctl_t RM_Clicker::ParseData()
 	RC_CtrlData.rc.ch3 = (((int16_t)pData[4] >> 1) | ((int16_t)pData[5]<<7)) & 0x07FF;
 	RC_CtrlData.rc.s1 = ((pData[5] >> 4) & 0x000C) >> 2;
 	RC_CtrlData.rc.s2 = ((pData[5] >> 4) & 0x0003);
-	RC_CtrlData.rc.bl = ((int16_t)pData[16] | ((int16_t)pData[17] << 8)) & 0x07FF;
 	RC_CtrlData.mouse.x = ((int16_t)pData[6]) | ((int16_t)pData[7] << 8);
 	RC_CtrlData.mouse.y = ((int16_t)pData[8]) | ((int16_t)pData[9] << 8);
 	RC_CtrlData.mouse.z = ((int16_t)pData[10]) | ((int16_t)pData[11] << 8); 

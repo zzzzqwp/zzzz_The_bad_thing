@@ -27,7 +27,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Total_stack.h"
-//combines_x_x_t xsd;float sdfx = 0.2;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,6 +58,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 /* USER CODE END 0 */
 
 /**
@@ -74,7 +74,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -92,24 +92,15 @@ int main(void)
   MX_DMA_Init();
   MX_CAN1_Init();
   MX_CAN2_Init();
-  MX_UART7_Init();
-  MX_UART8_Init();
+  MX_USART1_UART_Init();
+  MX_USART3_UART_Init();
   MX_USART6_UART_Init();
   MX_TIM5_Init();
   MX_TIM6_Init();
-  MX_TIM7_Init();
-  MX_USART1_UART_Init();
-  MX_USART3_UART_Init();
-  MX_TIM2_Init();
-	Gpio_led_init();
   /* USER CODE BEGIN 2 */
-	HAL_UARTEx_ReceiveToIdle_DMA(&vision_Huart,vision_data.vision_RX_data,13);//视觉接收
 	Total_tasks_Init();//基本参数初始化
 	HAL_TIM_Base_Start_IT(&htim6);//控制器定时
 	HAL_TIM_Base_Start_IT(&htim5);//发送
-	HAL_TIM_Base_Start_IT(&htim7);
-//	HAL_UART_Receive_IT(&vision_Huart,vision_data.vision_RX_data,9);
-	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,45 +110,21 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		dir = rmClicker.ISDir();
-		Motor2006.ISDir();
-		Motor3508.ISDir();
-		Motor6020.ISDir();
+		//上下板子断链
+		Gimbal_to_Chassis_Data.dir = Gimbal_to_Chassis_Data.dir_time.ISDir(50);
+		if(Gimbal_to_Chassis_Data.dir)Get_Gimbal_to_Chassis_Init();
+		dir = Gimbal_to_Chassis_Data.dir;
+		RM_RefereeSystem::RM_RefereeSystemDir();
 		
-		//陀螺仪获取端
-		#if GY_GET_SIG == GY_CAN
-			GY_dir |= chGy_chassis.GetDir();
-		#elif GY_GET_SIG == GY_232
-			GY_dir |= ch_gyro_232_is_dir(&ch_gyro_232_uart_chassis,&chGy_chassis);
-		#endif
+		//上下板通信挂掉
+		HAL_GPIO_WritePin(GPIOG,GPIO_PIN_1,((GPIO_PinState)!dir));
 		
-		Total_tasks_Run();		
-
-//		td1.td_quadratic(chGy_chassis.data.ASz);
-//		td2.td_quadratic(chGy_chassis.data.ASz);
-//		td3.td_quadratic(chGy_chassis.data.ASz);
-//	xsd.combines_x_x(td_pitch_encoder_angle.u + 232.2,td_pitch_gy_angle.u,sdfx,0.001);
-//	*((float*)&send_str2[0]) = (td_pitch_encoder_angle.u + 232.2);
-//	*((float*)&send_str2[4]) = (td_pitch_encoder_angle.x1 + 232.2);
-//	*((float*)&send_str2[8]) =  td_pitch_gy_angle.u;
-//	*((float*)&send_str2[12]) = xsd.y2;
-//	*((float*)&send_str2[16]) =  0;	
-//	*((float*)&send_str2[16]) =  0;
-  #if Debug_UART_SW == Debug_ON
-	  *((float*)&send_str2[0]) = yaw_target_add_angle;
-  	*((float*)&send_str2[4]) = yaw_zz_pid_s.feedback;
-	  *((float*)&send_str2[8]) =  _Motor6020_[1].Data[0];
-	  *((float*)&send_str2[12]) = RM_yaw_UDE.out_torque;
-	  *((float*)&send_str2[16]) = RM_yaw_UDE.feedback_torque;
-	  *((float*)&send_str2[20]) = RM_yaw_UDE.out;
-	  *((float*)&send_str2[24]) =  (yaw_zz_pid_v.out-RM_yaw_UDE.out);
-	  *((uint32_t*)&send_str2[sizeof(float) * (7)]) = 0x7f800000;
-	  //开始发送数据
-   HAL_UART_Transmit_DMA(&Send_Usart_Data_Huart, send_str2, sizeof(float) * (7 + 1));
-
-  #elif Debug_UART_SW == Debug_OFF
-
-  #endif
+		pm01.PM01SendFun();//发送超电
+				
+		darw_graphic_ui();//发送ui
+		dianlu = (-_Motor3508_[0].Data[Motor_Data_Torque]+_Motor3508_[1].Data[Motor_Data_Torque]+_Motor3508_[2].Data[Motor_Data_Torque]+(-_Motor3508_[3].Data[Motor_Data_Torque]))*0.25;
+		dianlutd.td_quadratic(dianlu / 819.2 * 24);
+		dianlupid = (-wheel_ladrc_left_1.u+wheel_ladrc_left_2.u+wheel_ladrc_right_1.u+(-wheel_ladrc_right_2.u))*0.25;
   }
   /* USER CODE END 3 */
 }
@@ -184,17 +151,10 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 6;
-  RCC_OscInitStruct.PLL.PLLN = 180;
+  RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 4;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Activate the Over-Drive mode
-  */
-  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
   {
     Error_Handler();
   }
