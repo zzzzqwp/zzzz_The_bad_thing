@@ -21,87 +21,14 @@ Target DLL:      CMSIS_AGDI.dll V1.32.12.0
 Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
-C:\Users\Administrator\Desktop\ʦ�ֳ���\16.0\16.0\Omnidirectional_Wheels_chassis_F407_240301\MDK-ARM\Omnidirectional_Wheels_chassis_F407_240301.uvprojx
-Project File Date:  05/27/2024
+D:\����\zzzz_The_bad_thing\zzzz_The_bad_thing\Omnidirectional_Wheels\chassis\MDK-ARM\Omnidirectional_Wheels_chassis_F407_240301.uvprojx
+Project File Date:  08/27/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Omnidirectional_Wheels_chassis_F407_240301'
-Note: source file '..\Core\Src\main.cpp' - object file renamed from 'Omnidirectional_Wheels_chassis_F407_240301\main.o' to 'Omnidirectional_Wheels_chassis_F407_240301\main_1.o'.
-compiling main.cpp...
-../RM_File/RM_stm32fxxx_hal.h(49): warning:  #1-D: last line of file ends without a newline
-  /**************************************************************************/
-../RM_File/ladrc.h(15): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      y2 = k * x1 + (1.0 - k) * x2;
-../RM_File/ladrc.h(66): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fhan_a1 = sqrtf(fhan_d * (fhan_d + 8.0 * fabs(fhan_y)));
-../RM_File/ladrc.h(67): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fhan_a2 = fhan_a0 + Fign_Fun(fhan_y) * (fhan_a1 - fhan_d) * 0.5;
-../RM_File/ladrc.h(68): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      fhan_a = (fhan_a0 + fhan_y) * Fsg_Fun(fhan_y,fhan_d) + fhan_a2 * (1.0 - Fsg_Fun(fhan_y,fhan_d));
-../RM_File/ladrc.h(69): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      return -r * (fhan_a / fhan_d) * Fsg_Fun(fhan_a,fhan_d) - r * Fign_Fun(fhan_a) * (1.0 - Fsg_Fun(fhan_a,fhan_d));
-../RM_File/ladrc.h(83): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
-  	 :r(r),h(h),max_x2(max_x2),Fun(Fun)
-../RM_File/ladrc.h(114): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          this->r2_1 = 1.0 / (2.0 * this->r);//r2_1�?2r的倒数
-../RM_File/ladrc.h(186): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
-  		:td(td),b(b),max_u(max_u),h(h),wc(wc),w0(w0),max_z2(max_z2)
-../RM_File/ladrc.h(186): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
-  		:td(td),b(b),max_u(max_u),h(h),wc(wc),w0(w0),max_z2(max_z2)
-../RM_File/ladrc.h(231): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            this->bt1 = 2.0 * this->w0;//β1
-../RM_File/ladrc.h(245): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            this->bt1 = 3.0 * this->w0;//β1
-../RM_File/ladrc.h(246): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            this->bt2 = 3.0 * this->w0 * this->w0;//β2
-../RM_File/ladrc.h(316): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-            this->kd = 2.0 * this->wc;
-../RM_File/RM_Wheel.h(22): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->speed[0] = ((1.0 - ky) * vx + (1.0 - kx) * vy - vw);
-../RM_File/RM_Wheel.h(22): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->speed[0] = ((1.0 - ky) * vx + (1.0 - kx) * vy - vw);
-../RM_File/RM_Wheel.h(23): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->speed[1] = ((1.0 - ky) * vx - (1.0 - kx) * vy + vw);
-../RM_File/RM_Wheel.h(23): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->speed[1] = ((1.0 - ky) * vx - (1.0 - kx) * vy + vw);
-../RM_File/RM_Wheel.h(24): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->speed[2] = ((1.0 - ky) * vx + (1.0 - kx) * vy + vw);
-../RM_File/RM_Wheel.h(24): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->speed[2] = ((1.0 - ky) * vx + (1.0 - kx) * vy + vw);
-../RM_File/RM_Wheel.h(25): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->speed[3] = ((1.0 - ky) * vx - (1.0 - kx) * vy - vw);
-../RM_File/RM_Wheel.h(25): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->speed[3] = ((1.0 - ky) * vx - (1.0 - kx) * vy - vw);
-../RM_File/RM_Wheel.h(61): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->angle[0] = atan2(tempvx[0] , tempvy[0]) * 180 / 3.14 * 8191 / 360;         
-../RM_File/RM_Wheel.h(62): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->angle[1] = atan2(tempvx[1] , tempvy[1]) * 180 / 3.14 * 8191 / 360;
-../RM_File/RM_Wheel.h(63): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->angle[2] = atan2(tempvx[2] , tempvy[2]) * 180 / 3.14 * 8191 / 360;          
-../RM_File/RM_Wheel.h(64): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-        this->angle[3] = atan2(tempvx[3] , tempvy[3]) * 180 / 3.14 * 8191 / 360;
-../RM_File/RM_RefereeSystem.h(190): warning:  #1-D: last line of file ends without a newline
-  extern uint8_t daohang_tx_buf[128];
-../RM_File/Total_stack.h(295): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  			yaw_e_radian = (yaw_e_xita) * 0.017453;//转弧�?
-../RM_File/Total_stack.h(381): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//底盘解算
-../RM_File/Total_stack.h(381): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//底盘解算
-../RM_File/Total_stack.h(381): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  				wheel.UpData(vx * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,vy * 24.8242 * CHASSIS_SPEED_ZOOM_VXY,td_vw.x1 * CHASSIS_SPEED_ZOOM_VW * vxy_kvw,MAX_CHASSIS_SPEED);//底盘解算
-../RM_File/Total_stack.h(653): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	ly = (asin(angle_ly / 180.0 * 3.1415926) * 43) * collide_magnify;
-../RM_File/Total_stack.h(768): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		send_graphic_queue.add(RM_RefereeSystem::RM_RefereeSystemSetRectangle("cdc",1,CD_X - CD_W,CD_Y - CD_H + 10,CD_X - CD_W + pm01.cout_voltage * 16.7,CD_Y + CD_H - 10));
-..\Core\Src\main.cpp(127): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		dianlupid = (-wheel_ladrc_left_1.u+wheel_ladrc_left_2.u+wheel_ladrc_right_1.u+(-wheel_ladrc_right_2.u))*0.25;
-..\Core\Src\main.cpp: 34 warnings, 0 errors
-linking...
-Program Size: Code=36136 RO-data=2020 RW-data=312 ZI-data=10448  
-FromELF: creating hex file...
-"Omnidirectional_Wheels_chassis_F407_240301\Omnidirectional_Wheels_chassis_F407_240301.axf" - 0 Error(s), 34 Warning(s).
+Note: source file '..\Core\Src\main.c' - object file renamed from 'Omnidirectional_Wheels_chassis_F407_240301\main.o' to 'Omnidirectional_Wheels_chassis_F407_240301\main_1.o'.
+"Omnidirectional_Wheels_chassis_F407_240301\Omnidirectional_Wheels_chassis_F407_240301.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -124,7 +51,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

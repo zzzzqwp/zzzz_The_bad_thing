@@ -28,6 +28,7 @@
 "omnidirectional_wheels_chassis_f407_240301\system_stm32f4xx.o"
 "omnidirectional_wheels_chassis_f407_240301\rm_refereesystemcrc.o"
 "omnidirectional_wheels_chassis_f407_240301\rm_refereesystem.o"
+"omnidirectional_wheels_chassis_f407_240301\total_stack.o"
 --strict --scatter "Omnidirectional_Wheels_chassis_F407_240301\Omnidirectional_Wheels_chassis_F407_240301.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

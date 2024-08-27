@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../RM_File</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../RM_File;..\RM_logic</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -394,9 +394,9 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
-              <FileName>main.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\main.cpp</FilePath>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\main.c</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>
@@ -539,6 +539,11 @@
           <GroupName>RM_FILE</GroupName>
           <Files>
             <File>
+              <FileName>def_variable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\RM_File\def_variable.h</FilePath>
+            </File>
+            <File>
               <FileName>ladrc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\RM_File\ladrc.h</FilePath>
@@ -589,11 +594,6 @@
               <FilePath>..\RM_File\RM_stm32fxxx_hal.h</FilePath>
             </File>
             <File>
-              <FileName>Total_stack.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\RM_File\Total_stack.h</FilePath>
-            </File>
-            <File>
               <FileName>RM_Wheel.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\RM_File\RM_Wheel.h</FilePath>
@@ -602,11 +602,6 @@
               <FileName>RM_PM01.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\RM_File\RM_PM01.h</FilePath>
-            </File>
-            <File>
-              <FileName>def_variable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\RM_File\def_variable.h</FilePath>
             </File>
             <File>
               <FileName>RM_RefereeSystemCRC.h</FileName>
@@ -627,6 +622,21 @@
               <FileName>RM_RefereeSystem.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\RM_File\RM_RefereeSystem.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>RM_logic</GroupName>
+          <Files>
+            <File>
+              <FileName>Total_stack.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\RM_logic\Total_stack.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Total_stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\RM_logic\Total_stack.h</FilePath>
             </File>
           </Files>
         </Group>
