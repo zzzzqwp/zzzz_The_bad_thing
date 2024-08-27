@@ -1,6 +1,0 @@
-{
-  "files.associations": {
-    "cmath": "cpp",
-    "rm_stm32fxxx_hal.h": "c"
-  }
-}
